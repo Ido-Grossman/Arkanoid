@@ -8,11 +8,7 @@ import arkanoid.listeners.BlockRemover;
 import arkanoid.listeners.ScoreTrackingListener;
 import arkanoid.listeners.Counter;
 // the sprites to import.
-import arkanoid.sprites.Paddle;
-import arkanoid.sprites.SpriteCollection;
-import arkanoid.sprites.Ball;
-import arkanoid.sprites.Sprite;
-import arkanoid.sprites.ScoreIndicator;
+import arkanoid.sprites.*;
 // the collidables to import.
 import arkanoid.collidables.Block;
 import arkanoid.collidables.Collidable;
@@ -27,7 +23,6 @@ import biuoop.GUI;
 import biuoop.KeyboardSensor;
 
 import java.awt.Color;
-import java.security.Key;
 import java.util.List;
 import java.util.Random;
 
@@ -42,7 +37,7 @@ public class GameLevel implements Animation {
 
     private final GameEnvironment environment;
 
-    private final Counter remainingBalls;
+    private Counter remainingBalls;
 
     private final Counter remainingBlocks;
 
@@ -56,20 +51,23 @@ public class GameLevel implements Animation {
 
     private final LevelInformation info;
 
+    private boolean win;
+
     /**
      * the constructor of the game.
      *
      * @param information the levelinformation of this level.
      */
-    public GameLevel(LevelInformation information, KeyboardSensor sensor, AnimationRunner animation) {
+    public GameLevel(LevelInformation information, KeyboardSensor sensor, AnimationRunner animation, Counter score) {
         this.sprites = new SpriteCollection();
         this.environment = new GameEnvironment();
-        this.score = new Counter(0);
         this.keyboard = sensor;
         this.info = information;
         this.runner = animation;
-        this.remainingBalls = new Counter(this.info.numberOfBalls());
         this.remainingBlocks = new Counter(this.info.numberOfBlocksToRemove());
+        this.score = score;
+        this.remainingBalls = new Counter(this.info.numberOfBalls());
+        this.win = false;
     }
 
     /**
@@ -120,15 +118,10 @@ public class GameLevel implements Animation {
                 blocks.get(i).addToGame(this);
                 blocks.get(i).addHitListener(remover);
                 blocks.get(i).addHitListener(scoreTrack);
-            }
         }
+    }
 
-    /**
-     * initializes the game, sets the blocks and the ball and the paddle to their correct position and initialize them.
-     */
-    public void initialize() {
-        // creates the balls and sets their values.
-        int blockS = 4;
+    private void createBalls() {
         Random rand = new Random();
         Point[] bP = new Point[this.remainingBalls.getValue()];
         for (int i = 0; i < this.remainingBalls.getValue(); i++) {
@@ -141,6 +134,15 @@ public class GameLevel implements Animation {
             ball[i].addToGame(this);
             ball[i].setEnvironment(this.environment);
         }
+    }
+
+    /**
+     * initializes the game, sets the blocks and the ball and the paddle to their correct position and initialize them.
+     */
+    public void initialize() {
+        // creates the balls and sets their values.
+        int blockS = 4;
+        this.createBalls();
         // creates all the blocks and every row sets a random color.
         this.addBlocks();
         // creates the corners of the screen.
@@ -156,8 +158,10 @@ public class GameLevel implements Animation {
         death.addToGame(this);
         BallRemover remove = new BallRemover(this, this.remainingBalls);
         death.addHitListener(remove);
+        LevelName name = new LevelName(this.info.levelName());
         ScoreIndicator s = new ScoreIndicator(this.score);
         this.addSprite(s);
+        this.addSprite(name);
         this.running = true;
     }
 
@@ -172,13 +176,19 @@ public class GameLevel implements Animation {
         this.sprites.notifyAllTimePassed();
         if (this.remainingBlocks.getValue() == 0) {
             this.score.increase(100);
+            this.win = true;
+            this.running = false;
         }
-        if (this.remainingBlocks.getValue() == 0 || this.remainingBalls.getValue() == 0) {
+        if (this.remainingBalls.getValue() == 0) {
             this.running = false;
         }
         if (this.keyboard.isPressed("p")) {
             this.runner.run(new PauseScreen(this.keyboard));
         }
+    }
+
+    public boolean nextLevel() {
+        return this.win;
     }
 
     /**

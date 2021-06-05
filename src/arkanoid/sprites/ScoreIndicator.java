@@ -33,7 +33,7 @@ public class ScoreIndicator implements Sprite {
         d.setColor(Color.WHITE);
         d.fillRectangle(0, 0, 800, 20);
         d.setColor(Color.BLACK);
-        d.drawText(400, 20, "Score:" + this.score.toString(), 20);
+        d.drawText(350, 20, "Score:" + this.score.toString(), 20);
     }
 
     /**
@@ -41,6 +41,5 @@ public class ScoreIndicator implements Sprite {
      */
     @Override
     public void timePassed() {
-
     }
 }

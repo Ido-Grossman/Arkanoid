@@ -1,9 +1,11 @@
 //ID: 208985424
 import arkanoid.animation.AnimationRunner;
 import arkanoid.levels.GameFlow;
-import arkanoid.levels.GameLevel;
+import arkanoid.listeners.Counter;
 import arkanoid.levels.LevelInformation;
 import arkanoid.levels.LevelOne;
+import arkanoid.levels.levelTwo;
+import arkanoid.sprites.LivesIndicator;
 import biuoop.GUI;
 
 import java.util.ArrayList;
@@ -22,10 +24,10 @@ public class Ass6Game {
      * @param args the given arguments from the user.
      */
     public static void main(String[] args) {
-        LevelInformation one = new LevelOne();
         List<LevelInformation> l = new ArrayList<>();
-        l.add(one);
-        GUI gui = new GUI("nisayon", 800, 600);
+        l.add(new LevelOne());
+        l.add(new levelTwo());
+        GUI gui = new GUI("arkanoid", 800, 600);
         AnimationRunner animation = new AnimationRunner(gui, 60);
         GameFlow flow = new GameFlow(animation, gui.getKeyboardSensor());
         flow.runLevels(l);

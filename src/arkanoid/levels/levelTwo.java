@@ -3,25 +3,19 @@ package arkanoid.levels;
 import arkanoid.Velocity;
 import arkanoid.collidables.Block;
 import arkanoid.geometry.Point;
-import arkanoid.geometry.Rectangle;
 import arkanoid.sprites.Sprite;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author ido grossman <idoddii@gmail.com>
- * @version 1.
- * @since 05-06-2021
- */
-public class LevelOne implements LevelInformation {
+public class levelTwo implements LevelInformation {
     /**
      * @return the number of balls in the given level.
      */
     @Override
     public int numberOfBalls() {
-        return 2;
+        return 5;
     }
 
     /**
@@ -30,8 +24,11 @@ public class LevelOne implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> v = new ArrayList<>();
-        v.add(Velocity.fromAngleAndSpeed(50, 5));
         v.add(Velocity.fromAngleAndSpeed(300, 5));
+        v.add(Velocity.fromAngleAndSpeed(290, 5));
+        v.add(Velocity.fromAngleAndSpeed(310, 5));
+        v.add(Velocity.fromAngleAndSpeed(330, 5));
+        v.add(Velocity.fromAngleAndSpeed(350, 5));
         return v;
     }
 
@@ -40,7 +37,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public int paddleSpeed() {
-        return 5;
+        return 10;
     }
 
     /**
@@ -48,7 +45,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public int paddleWidth() {
-        return 75;
+        return 200;
     }
 
     /**
@@ -56,7 +53,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "WAAN";
+        return "dos";
     }
 
     /**
@@ -74,14 +71,12 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        int rows = 6, columns = 12, width = 40, height = 20;
+        int columns = 12, width = 40, height = 20;
         Color[] colors = {Color.GRAY, Color.RED, Color.YELLOW, Color.BLUE, Color.PINK, Color.GREEN};
         List<Block> blocks = new ArrayList<>();
-        for (int i = 0; i < rows; i++) {
-            for (int j = i; j < columns; j++) {
-                blocks.add(new Block(new Rectangle(new Point(300 + width * j, 100 + height * i),
-                        width, height), colors[i]));
-            }
+        for (int i = 0; i < columns; i++) {
+                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(300 + width * i, 100),
+                        width, height), colors[0]));
         }
         return blocks;
     }
@@ -91,6 +86,6 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 50;
+        return 12;
     }
 }
