@@ -1,8 +1,7 @@
 package arkanoid.levels;
 
 import arkanoid.GameEnvironment;
-import arkanoid.animation.Animation;
-import arkanoid.animation.AnimationRunner;
+import arkanoid.animation.*;
 import arkanoid.listeners.BallRemover;
 import arkanoid.listeners.BlockRemover;
 import arkanoid.listeners.ScoreTrackingListener;
@@ -16,15 +15,13 @@ import arkanoid.collidables.Collidable;
 import arkanoid.geometry.Rectangle;
 import arkanoid.geometry.Point;
 // the Animation to import.
-import arkanoid.animation.PauseScreen;
+import arkanoid.animation.KeyPressStoppableAnimation;
 // the biuoop to import.
 import biuoop.DrawSurface;
-import biuoop.GUI;
 import biuoop.KeyboardSensor;
 
 import java.awt.Color;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author ido grossman <idoddii@gmail.com>
@@ -122,10 +119,9 @@ public class GameLevel implements Animation {
     }
 
     private void createBalls() {
-        Random rand = new Random();
         Point[] bP = new Point[this.remainingBalls.getValue()];
         for (int i = 0; i < this.remainingBalls.getValue(); i++) {
-            bP[i] = new Point(rand.nextInt(758) + 21, rand.nextInt(150) + 400);
+            bP[i] = new Point(400, 560);
         }
         Ball[] ball = new Ball[this.remainingBalls.getValue()];
         for (int i = 0; i < bP.length; i++) {
@@ -183,7 +179,9 @@ public class GameLevel implements Animation {
             this.running = false;
         }
         if (this.keyboard.isPressed("p")) {
-            this.runner.run(new PauseScreen(this.keyboard));
+            Animation p = new PauseScreen();
+            Animation pk = new KeyPressStoppableAnimation(this.keyboard, KeyboardSensor.SPACE_KEY, p);
+            this.runner.run(pk);
         }
     }
 

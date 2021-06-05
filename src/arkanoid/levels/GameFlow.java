@@ -2,9 +2,10 @@ package arkanoid.levels;
 
 import arkanoid.animation.AnimationRunner;
 
+import arkanoid.animation.EndScreen;
+import arkanoid.animation.KeyPressStoppableAnimation;
 import arkanoid.listeners.Counter;
-import arkanoid.sprites.LivesIndicator;
-import arkanoid.sprites.ScoreIndicator;
+import arkanoid.animation.Animation;
 import biuoop.KeyboardSensor;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class GameFlow {
 
     private final AnimationRunner animationRunner;
 
+    private boolean win;
 
     private final Counter score;
 
@@ -22,6 +24,7 @@ public class GameFlow {
         this.animationRunner = ar;
         this.keyboardSensor = ks;
         this.score = new Counter(0);
+        this.win = true;
     }
 
     public void runLevels(List<LevelInformation> levels) {
@@ -33,9 +36,13 @@ public class GameFlow {
                 continue;
             }
             if (level.shouldStop()) {
+                this.win = false;
                 break;
             }
         }
+        Animation end = new EndScreen(this.win, this.score);
+        Animation endk = new KeyPressStoppableAnimation(this.keyboardSensor, KeyboardSensor.SPACE_KEY, end);
+        this.animationRunner.run(endk);
         this.animationRunner.getGui().close();
     }
 }

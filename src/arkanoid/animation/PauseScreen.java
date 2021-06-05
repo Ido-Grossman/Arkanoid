@@ -10,19 +10,6 @@ import biuoop.DrawSurface;
  */
 public class PauseScreen implements Animation {
 
-    private final KeyboardSensor keyboard;
-
-    private boolean stop;
-
-    /**
-     * the constructor of the class.
-     * @param k the keyboard sensor.
-     */
-    public PauseScreen(KeyboardSensor k) {
-        this.keyboard = k;
-        this.stop = false;
-    }
-
     /**
      * does all the actions in a frame.
      *
@@ -31,9 +18,6 @@ public class PauseScreen implements Animation {
     @Override
     public void doOneFrame(DrawSurface d) {
         d.drawText(10, d.getHeight() / 2, "paused -- press space to continue", 32);
-        if (this.keyboard.isPressed(KeyboardSensor.SPACE_KEY)) {
-            this.stop = true;
-        }
     }
 
     /**
@@ -41,6 +25,6 @@ public class PauseScreen implements Animation {
      */
     @Override
     public boolean shouldStop() {
-        return this.stop;
+        return false;
     }
 }
