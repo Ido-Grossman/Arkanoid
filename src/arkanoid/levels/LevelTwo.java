@@ -4,6 +4,7 @@ import arkanoid.Velocity;
 import arkanoid.collidables.Block;
 import arkanoid.geometry.Point;
 import arkanoid.geometry.Rectangle;
+import arkanoid.sprites.Level2Background;
 import arkanoid.sprites.Sprite;
 
 import java.awt.Color;
@@ -59,7 +60,7 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "dos";
+        return "Rubik Cube";
     }
 
     /**
@@ -67,7 +68,7 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public Sprite getBackground() {
-        return new Block(new Rectangle(new Point(0, 20), 800, 580), Color.BLACK);
+        return new Level2Background();
     }
 
     /**
@@ -77,12 +78,33 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        int columns = 12, width = 40, height = 20;
-        Color[] colors = {Color.GRAY, Color.RED, Color.YELLOW, Color.BLUE, Color.PINK, Color.GREEN};
+        int columns = 3, width = 60, height = 30;
+        Color darkRed = new Color(144, 5, 5);
+        Color darkGreen = new Color(29, 101, 51);
         List<Block> blocks = new ArrayList<>();
         for (int i = 0; i < columns; i++) {
-                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(300 + width * i, 100),
-                        width, height), colors[0]));
+            for (int j = 0; j < columns; j++) {
+                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(300 + width * j, 110 + height * i),
+                        width, height), darkGreen));
+            }
+        }
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < columns; j++) {
+                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(300 + width * j, 200 + height * i),
+                        width, height), Color.BLUE));
+            }
+        }
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < columns; j++) {
+                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(480 + width * j, 200 + height * i),
+                        width, height), Color.YELLOW));
+            }
+        }
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < columns; j++) {
+                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(120 + width * j, 200 + height * i),
+                        width, height), darkRed));
+            }
         }
         return blocks;
     }
@@ -92,6 +114,6 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 12;
+        return 36;
     }
 }

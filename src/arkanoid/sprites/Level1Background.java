@@ -1,14 +1,18 @@
 package arkanoid.sprites;
 
-import arkanoid.collidables.Block;
-import arkanoid.geometry.Point;
 import biuoop.DrawSurface;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author ido grossman <idoddii@gmail.com>
+ * @version 1.
+ * @since 06-06-2021
+ */
 public class Level1Background implements Sprite {
+
     /**
      * draws the Arkanoid.Sprites.Sprite on the given surface.
      *

@@ -22,7 +22,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public int numberOfBalls() {
-        return 2;
+        return 1;
     }
 
     /**
@@ -31,8 +31,7 @@ public class LevelOne implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> v = new ArrayList<>();
-        v.add(Velocity.fromAngleAndSpeed(50, 5));
-        v.add(Velocity.fromAngleAndSpeed(300, 5));
+        v.add(Velocity.fromAngleAndSpeed(0, 8));
         return v;
     }
 
@@ -76,7 +75,7 @@ public class LevelOne implements LevelInformation {
     @Override
     public List<Block> blocks() {
 //        int rows = 6, columns = 12, width = 40, height = 20;
-        int width = 40, height = 20;
+        int width = 100, height = 40;
 //        Color[] colors = {Color.GRAY, Color.RED, Color.YELLOW, Color.BLUE, Color.PINK, Color.GREEN};
 //        List<Block> blocks = new ArrayList<>();
 //        for (int i = 0; i < rows; i++) {
@@ -87,7 +86,7 @@ public class LevelOne implements LevelInformation {
 //        }
         List<Block> blocks = new ArrayList<>();
         blocks.add(new Block(new Rectangle(new Point(20, 100), width, height), Color.WHITE));
-        blocks.add(new Block(new Rectangle(new Point(740, 100), width, height), Color.WHITE));
+        blocks.add(new Block(new Rectangle(new Point(680, 100), width, height), Color.WHITE));
         return blocks;
     }
 
