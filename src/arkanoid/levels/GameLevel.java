@@ -158,10 +158,10 @@ public class GameLevel implements Animation {
                 new Rectangle(screenLUp, 800, 20)};
         Block[] bS = new Block[blockS];
         for (int i = 0; i < rS.length; i++) {
-            bS[i] = new Block(rS[i], Color.BLACK);
+            bS[i] = new Block(rS[i], Color.GRAY);
             bS[i].addToGame(this);
         }
-        Block death = new Block(new Rectangle(new Point(-50, 620), 860, 5), Color.BLACK);
+        Block death = new Block(new Rectangle(new Point(-50, 620), 860, 5), Color.GRAY);
         death.addToGame(this);
         BallRemover remove = new BallRemover(this, this.remainingBalls);
         death.addHitListener(remove);

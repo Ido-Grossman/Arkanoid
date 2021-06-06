@@ -53,10 +53,9 @@ public class Block implements Collidable, Sprite, HitNotifier {
         d.setColor(this.color);
         d.fillRectangle((int) this.form.getUpperLeft().getX(), (int) this.form.getUpperLeft().getY(),
                 (int) this.form.getWidth(), (int) this.form.getHeight());
-        d.setColor(Color.WHITE);
+        d.setColor(Color.BLACK);
         d.drawRectangle((int) this.form.getUpperLeft().getX(), (int) this.form.getUpperLeft().getY(),
                 (int) this.form.getWidth(), (int) this.form.getHeight());
-        d.setColor(Color.BLACK);
     }
 
     /**

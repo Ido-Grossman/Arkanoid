@@ -4,6 +4,7 @@ import arkanoid.Velocity;
 import arkanoid.collidables.Block;
 import arkanoid.geometry.Point;
 import arkanoid.geometry.Rectangle;
+import arkanoid.sprites.Level1Background;
 import arkanoid.sprites.Sprite;
 
 import java.awt.Color;
@@ -56,7 +57,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "Number WAAAAN";
+        return "Bowling 2 Side Pins";
     }
 
     /**
@@ -64,7 +65,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public Sprite getBackground() {
-        return new Block(new Rectangle(new Point(0, 20), 800, 580), Color.BLACK);
+        return new Level1Background();
     }
 
     /**
