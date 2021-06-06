@@ -20,7 +20,7 @@ public class LevelName implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
         d.setColor(Color.BLACK);
-        d.drawText(550, 20, "Level Name:" + name, 20);
+        d.drawText(500, 20, "Level Name:" + name, 20);
     }
 
     /**

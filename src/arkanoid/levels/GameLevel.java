@@ -34,7 +34,7 @@ public class GameLevel implements Animation {
 
     private final GameEnvironment environment;
 
-    private Counter remainingBalls;
+    private final Counter remainingBalls;
 
     private final Counter remainingBlocks;
 

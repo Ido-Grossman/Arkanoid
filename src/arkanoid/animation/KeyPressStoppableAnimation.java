@@ -21,7 +21,7 @@ public class KeyPressStoppableAnimation implements Animation {
         this.key = key;
         this.animation = animation;
         this.isAlreadyPressed = true;
-        this.stop = false;
+        this.stop = true;
     }
 
     /**
@@ -32,7 +32,7 @@ public class KeyPressStoppableAnimation implements Animation {
     @Override
     public void doOneFrame(DrawSurface d) {
         if (this.keyboardSensor.isPressed(this.key) && !this.isAlreadyPressed) {
-            this.stop = true;
+            this.stop = false;
         }
         if (!this.keyboardSensor.isPressed(this.key)) {
             this.isAlreadyPressed = false;
@@ -45,6 +45,6 @@ public class KeyPressStoppableAnimation implements Animation {
      */
     @Override
     public boolean shouldStop() {
-        return this.stop;
+        return !this.stop;
     }
 }
