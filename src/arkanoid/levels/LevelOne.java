@@ -56,7 +56,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "WAAN";
+        return "Number WAAAAN";
     }
 
     /**
