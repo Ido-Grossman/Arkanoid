@@ -1,21 +1,29 @@
 package arkanoid.levels;
 
 import arkanoid.GameEnvironment;
-import arkanoid.animation.*;
+// the animations to import.
+import arkanoid.animation.AnimationRunner;
+import arkanoid.animation.KeyPressStoppableAnimation;
+import arkanoid.animation.PauseScreen;
+import arkanoid.animation.Animation;
+// the listeners to import
 import arkanoid.listeners.BallRemover;
 import arkanoid.listeners.BlockRemover;
 import arkanoid.listeners.ScoreTrackingListener;
 import arkanoid.listeners.Counter;
 // the sprites to import.
-import arkanoid.sprites.*;
+import arkanoid.sprites.Sprite;
+import arkanoid.sprites.LevelName;
+import arkanoid.sprites.Ball;
+import arkanoid.sprites.Paddle;
+import arkanoid.sprites.ScoreIndicator;
+import arkanoid.sprites.SpriteCollection;
 // the collidables to import.
 import arkanoid.collidables.Block;
 import arkanoid.collidables.Collidable;
 // the geometry to import.
 import arkanoid.geometry.Rectangle;
 import arkanoid.geometry.Point;
-// the Animation to import.
-import arkanoid.animation.KeyPressStoppableAnimation;
 // the biuoop to import.
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
@@ -54,6 +62,9 @@ public class GameLevel implements Animation {
      * the constructor of the game.
      *
      * @param information the levelinformation of this level.
+     * @param sensor the keyboard sensor of the gui.
+     * @param animation the animation of the level.
+     * @param score the score of the player.
      */
     public GameLevel(LevelInformation information, KeyboardSensor sensor, AnimationRunner animation, Counter score) {
         this.sprites = new SpriteCollection();
@@ -73,10 +84,6 @@ public class GameLevel implements Animation {
      */
     public void addCollidable(Collidable c) {
         this.environment.addCollidable(c);
-    }
-
-    public Counter getRemainingBalls() {
-        return this.remainingBalls;
     }
 
     /**
@@ -104,7 +111,7 @@ public class GameLevel implements Animation {
     }
 
     /**
-     * creates the blocks in the game and adds them to the game.
+     * adds the blocks of the level to the game.
      */
     private void addBlocks() {
         List<Block> blocks = this.info.blocks();
@@ -118,6 +125,9 @@ public class GameLevel implements Animation {
         }
     }
 
+    /**
+     * creates the balls in the level.
+     */
     private void createBalls() {
         Point[] bP = new Point[this.remainingBalls.getValue()];
         for (int i = 0; i < this.remainingBalls.getValue(); i++) {
@@ -125,7 +135,7 @@ public class GameLevel implements Animation {
         }
         Ball[] ball = new Ball[this.remainingBalls.getValue()];
         for (int i = 0; i < bP.length; i++) {
-            ball[i] = new Ball(bP[i], 5, Color.BLACK);
+            ball[i] = new Ball(bP[i], 5, Color.WHITE);
             ball[i].setVelocity(this.info.initialBallVelocities().get(i));
             ball[i].addToGame(this);
             ball[i].setEnvironment(this.environment);
@@ -136,6 +146,7 @@ public class GameLevel implements Animation {
      * initializes the game, sets the blocks and the ball and the paddle to their correct position and initialize them.
      */
     public void initialize() {
+        this.addSprite(this.info.getBackground());
         // creates the balls and sets their values.
         int blockS = 4;
         this.createBalls();
@@ -185,6 +196,9 @@ public class GameLevel implements Animation {
         }
     }
 
+    /**
+     * @return if the player won or lost.
+     */
     public boolean nextLevel() {
         return this.win;
     }

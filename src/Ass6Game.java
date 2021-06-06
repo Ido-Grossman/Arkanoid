@@ -1,16 +1,13 @@
 //ID: 208985424
 import arkanoid.animation.AnimationRunner;
 import arkanoid.levels.GameFlow;
-import arkanoid.listeners.Counter;
 import arkanoid.levels.LevelInformation;
 import arkanoid.levels.LevelOne;
-import arkanoid.levels.levelTwo;
-import arkanoid.sprites.LivesIndicator;
+import arkanoid.levels.LevelTwo;
 import biuoop.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 /**
  * @author ido grossman <idoddii @ gmail.com>
@@ -26,7 +23,7 @@ public class Ass6Game {
     public static void main(String[] args) {
         List<LevelInformation> l = new ArrayList<>();
         l.add(new LevelOne());
-        l.add(new levelTwo());
+        l.add(new LevelTwo());
         GUI gui = new GUI("arkanoid", 800, 600);
         AnimationRunner animation = new AnimationRunner(gui, 60);
         GameFlow flow = new GameFlow(animation, gui.getKeyboardSensor());

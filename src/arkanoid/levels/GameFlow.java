@@ -10,6 +10,11 @@ import biuoop.KeyboardSensor;
 
 import java.util.List;
 
+/**
+ * @author ido grossman <idoddii@gmail.com>
+ * @version 1.
+ * @since 05-06-2021
+ */
 public class GameFlow {
 
     private final KeyboardSensor keyboardSensor;
@@ -20,6 +25,11 @@ public class GameFlow {
 
     private final Counter score;
 
+    /**
+     * the constructor of the class.
+     * @param ar the animation to run.
+     * @param ks the keyboard sensor of the gui.
+     */
     public GameFlow(AnimationRunner ar, KeyboardSensor ks) {
         this.animationRunner = ar;
         this.keyboardSensor = ks;
@@ -27,19 +37,26 @@ public class GameFlow {
         this.win = true;
     }
 
+    /**
+     * running the levels of the game.
+     * @param levels the levels to run.
+     */
     public void runLevels(List<LevelInformation> levels) {
         for (LevelInformation levelInfo : levels) {
             GameLevel level = new GameLevel(levelInfo, this.keyboardSensor, this.animationRunner, this.score);
             level.initialize();
             level.run();
+            // if the player won the level it takes him to the next level.
             if (level.nextLevel()) {
                 continue;
             }
+            // if the player lost the level it ends the game.
             if (level.shouldStop()) {
                 this.win = false;
                 break;
             }
         }
+        // runs the end screen and closes the game.
         Animation end = new EndScreen(this.win, this.score);
         Animation endk = new KeyPressStoppableAnimation(this.keyboardSensor, KeyboardSensor.SPACE_KEY, end);
         this.animationRunner.run(endk);

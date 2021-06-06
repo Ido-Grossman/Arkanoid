@@ -64,7 +64,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public Sprite getBackground() {
-        return null;
+        return new Block(new Rectangle(new Point(0, 20), 800, 580), Color.BLACK);
     }
 
     /**
@@ -74,15 +74,19 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        int rows = 6, columns = 12, width = 40, height = 20;
-        Color[] colors = {Color.GRAY, Color.RED, Color.YELLOW, Color.BLUE, Color.PINK, Color.GREEN};
+//        int rows = 6, columns = 12, width = 40, height = 20;
+        int width = 40, height = 20;
+//        Color[] colors = {Color.GRAY, Color.RED, Color.YELLOW, Color.BLUE, Color.PINK, Color.GREEN};
+//        List<Block> blocks = new ArrayList<>();
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = i; j < columns; j++) {
+//                blocks.add(new Block(new Rectangle(new Point(300 + width * j, 100 + height * i),
+//                        width, height), colors[i]));
+//            }
+//        }
         List<Block> blocks = new ArrayList<>();
-        for (int i = 0; i < rows; i++) {
-            for (int j = i; j < columns; j++) {
-                blocks.add(new Block(new Rectangle(new Point(300 + width * j, 100 + height * i),
-                        width, height), colors[i]));
-            }
-        }
+        blocks.add(new Block(new Rectangle(new Point(20, 100), width, height), Color.WHITE));
+        blocks.add(new Block(new Rectangle(new Point(740, 100), width, height), Color.WHITE));
         return blocks;
     }
 
@@ -91,6 +95,6 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 50;
+        return 2;
     }
 }

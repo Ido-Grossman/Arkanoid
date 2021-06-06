@@ -3,13 +3,19 @@ package arkanoid.levels;
 import arkanoid.Velocity;
 import arkanoid.collidables.Block;
 import arkanoid.geometry.Point;
+import arkanoid.geometry.Rectangle;
 import arkanoid.sprites.Sprite;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class levelTwo implements LevelInformation {
+/**
+ * @author ido grossman <idoddii@gmail.com>
+ * @version 1.
+ * @since 04-06-2021
+ */
+public class LevelTwo implements LevelInformation {
     /**
      * @return the number of balls in the given level.
      */
@@ -61,7 +67,7 @@ public class levelTwo implements LevelInformation {
      */
     @Override
     public Sprite getBackground() {
-        return null;
+        return new Block(new Rectangle(new Point(0, 20), 800, 580), Color.BLACK);
     }
 
     /**

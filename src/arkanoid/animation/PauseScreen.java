@@ -1,6 +1,5 @@
 package arkanoid.animation;
 
-import biuoop.KeyboardSensor;
 import biuoop.DrawSurface;
 
 /**

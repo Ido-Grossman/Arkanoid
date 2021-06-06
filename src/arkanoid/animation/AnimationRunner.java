@@ -28,6 +28,9 @@ public class AnimationRunner {
         this.sleeper = new biuoop.Sleeper();
     }
 
+    /**
+     * @return the gui of the animation
+     */
     public GUI getGui() {
         return gui;
     }
@@ -38,6 +41,7 @@ public class AnimationRunner {
      */
     public void run(Animation animation) {
         int millisecondsPerFrame = 1000 / framesPerSecond;
+        // running the animation until the stop condition is true.
         while (!animation.shouldStop()) {
             long startTime = System.currentTimeMillis(); // timing
             DrawSurface d = gui.getDrawSurface();

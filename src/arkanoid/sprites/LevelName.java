@@ -1,13 +1,20 @@
 package arkanoid.sprites;
 
 import biuoop.DrawSurface;
+import java.awt.Color;
 
-import java.awt.*;
-
+/**
+ * @author ido grossman <idoddii@gmail.com>
+ * @version 1.
+ * @since 06-06-2021
+ */
 public class LevelName implements Sprite {
 
     private final String name;
 
+    /**
+     * @param name the name of the level.
+     */
     public LevelName(String name) {
         this.name = name;
     }
