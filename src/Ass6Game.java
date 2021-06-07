@@ -1,9 +1,6 @@
 //ID: 208985424
 import arkanoid.animation.AnimationRunner;
-import arkanoid.levels.GameFlow;
-import arkanoid.levels.LevelInformation;
-import arkanoid.levels.LevelOne;
-import arkanoid.levels.LevelTwo;
+import arkanoid.levels.*;
 import biuoop.GUI;
 
 import java.util.ArrayList;
@@ -22,15 +19,25 @@ public class Ass6Game {
      */
     public static void main(String[] args) {
         List<LevelInformation> l = new ArrayList<>();
+        System.out.println(args.length);
         if (args.length == 0) {
             l.add(new LevelOne());
             l.add(new LevelTwo());
+            l.add(new LevelThree());
+            l.add(new LevelFour());
         } else {
             for (String str : args) {
                 if (str.equals("1")) {
                     l.add(new LevelOne());
                 } else if (str.equals("2")) {
                     l.add(new LevelTwo());
+                } else if (str.equals("3")) {
+                    l.add(new LevelThree());
+                } else if (str.equals("4")) {
+                    l.add(new LevelFour());
+                } else {
+                    System.out.println("incorrect input.");
+                    return;
                 }
             }
         }

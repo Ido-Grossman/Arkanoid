@@ -2,10 +2,7 @@ package arkanoid.levels;
 
 import arkanoid.GameEnvironment;
 // the animations to import.
-import arkanoid.animation.AnimationRunner;
-import arkanoid.animation.KeyPressStoppableAnimation;
-import arkanoid.animation.PauseScreen;
-import arkanoid.animation.Animation;
+import arkanoid.animation.*;
 // the listeners to import
 import arkanoid.listeners.BallRemover;
 import arkanoid.listeners.BlockRemover;
@@ -169,7 +166,6 @@ public class GameLevel implements Animation {
         ScoreIndicator s = new ScoreIndicator(this.score);
         this.addSprite(s);
         this.addSprite(name);
-        this.running = true;
     }
 
     /**
@@ -216,10 +212,12 @@ public class GameLevel implements Animation {
      * runs the animation of the game.
      */
     public void run() {
+        this.runner.run(new CountdownAnimation(3, 4, this.sprites));
         // creates the paddle and adding it to the game.
         Paddle p = new Paddle(new Rectangle(new Point(375, 594), this.info.paddleWidth(), 5),
                 this.keyboard, 21,  779, this.info.paddleSpeed());
         p.addToGame(this);
+        this.running = true;
         this.runner.run(this);
         // runs the animation.
     }

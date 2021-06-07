@@ -4,7 +4,6 @@ import arkanoid.Velocity;
 import arkanoid.collidables.Block;
 import arkanoid.geometry.Point;
 import arkanoid.geometry.Rectangle;
-import arkanoid.sprites.Level2Background;
 import arkanoid.sprites.Sprite;
 
 import java.awt.Color;
@@ -68,7 +67,7 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public Sprite getBackground() {
-        return new Level2Background();
+        return new Block(new Rectangle(new Point(0, 20), 800, 580), Color.BLACK);
     }
 
     /**
