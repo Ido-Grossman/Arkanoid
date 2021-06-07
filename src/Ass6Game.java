@@ -22,8 +22,18 @@ public class Ass6Game {
      */
     public static void main(String[] args) {
         List<LevelInformation> l = new ArrayList<>();
-        l.add(new LevelOne());
-        l.add(new LevelTwo());
+        if (args.length == 0) {
+            l.add(new LevelOne());
+            l.add(new LevelTwo());
+        } else {
+            for (String str : args) {
+                if (str.equals("1")) {
+                    l.add(new LevelOne());
+                } else if (str.equals("2")) {
+                    l.add(new LevelTwo());
+                }
+            }
+        }
         GUI gui = new GUI("arkanoid", 800, 600);
         AnimationRunner animation = new AnimationRunner(gui, 60);
         GameFlow flow = new GameFlow(animation, gui.getKeyboardSensor());

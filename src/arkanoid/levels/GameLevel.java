@@ -189,7 +189,7 @@ public class GameLevel implements Animation {
         if (this.remainingBalls.getValue() == 0) {
             this.running = false;
         }
-        if (this.keyboard.isPressed("p")) {
+        if (this.keyboard.isPressed("p") || this.keyboard.isPressed("פ")) {
             Animation p = new PauseScreen();
             Animation pk = new KeyPressStoppableAnimation(this.keyboard, KeyboardSensor.SPACE_KEY, p);
             this.runner.run(pk);
