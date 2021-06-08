@@ -212,7 +212,6 @@ public class GameLevel implements Animation {
      * runs the animation of the game.
      */
     public void run() {
-        this.runner.run(new CountdownAnimation(3, 4, this.sprites));
         // creates the paddle and adding it to the game.
         Paddle p = new Paddle(new Rectangle(new Point(375, 594), this.info.paddleWidth(), 5),
                 this.keyboard, 21,  779, this.info.paddleSpeed());

@@ -48,7 +48,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public int paddleWidth() {
-        return 35;
+        return 60;
     }
 
     /**
@@ -74,16 +74,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-//        int rows = 6, columns = 12, width = 40, height = 20;
         int width = 100, height = 40;
-//        Color[] colors = {Color.GRAY, Color.RED, Color.YELLOW, Color.BLUE, Color.PINK, Color.GREEN};
-//        List<Block> blocks = new ArrayList<>();
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = i; j < columns; j++) {
-//                blocks.add(new Block(new Rectangle(new Point(300 + width * j, 100 + height * i),
-//                        width, height), colors[i]));
-//            }
-//        }
         List<Block> blocks = new ArrayList<>();
         blocks.add(new Block(new Rectangle(new Point(20, 100), width, height), Color.WHITE));
         blocks.add(new Block(new Rectangle(new Point(680, 100), width, height), Color.WHITE));

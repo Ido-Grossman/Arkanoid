@@ -20,12 +20,6 @@ public class Ass6Game {
     public static void main(String[] args) {
         List<LevelInformation> l = new ArrayList<>();
         System.out.println(args.length);
-        if (args.length == 0) {
-            l.add(new LevelOne());
-            l.add(new LevelTwo());
-            l.add(new LevelThree());
-            l.add(new LevelFour());
-        } else {
             for (String str : args) {
                 if (str.equals("1")) {
                     l.add(new LevelOne());
@@ -35,11 +29,13 @@ public class Ass6Game {
                     l.add(new LevelThree());
                 } else if (str.equals("4")) {
                     l.add(new LevelFour());
-                } else {
-                    System.out.println("incorrect input.");
-                    return;
                 }
             }
+        if (l.isEmpty()) {
+            l.add(new LevelOne());
+            l.add(new LevelTwo());
+            l.add(new LevelThree());
+            l.add(new LevelFour());
         }
         GUI gui = new GUI("arkanoid", 800, 600);
         AnimationRunner animation = new AnimationRunner(gui, 60);

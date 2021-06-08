@@ -43,7 +43,7 @@ public class LevelFour implements LevelInformation {
      */
     @Override
     public int paddleSpeed() {
-        return 5;
+        return 10;
     }
 
     /**
