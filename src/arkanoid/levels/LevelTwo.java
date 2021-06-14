@@ -21,7 +21,7 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public int numberOfBalls() {
-        return 5;
+        return 10;
     }
 
     /**
@@ -30,11 +30,16 @@ public class LevelTwo implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> v = new ArrayList<>();
-        v.add(Velocity.fromAngleAndSpeed(300, 5));
         v.add(Velocity.fromAngleAndSpeed(290, 5));
-        v.add(Velocity.fromAngleAndSpeed(310, 5));
-        v.add(Velocity.fromAngleAndSpeed(330, 5));
+        v.add(Velocity.fromAngleAndSpeed(305, 5));
+        v.add(Velocity.fromAngleAndSpeed(320, 5));
+        v.add(Velocity.fromAngleAndSpeed(335, 5));
         v.add(Velocity.fromAngleAndSpeed(350, 5));
+        v.add(Velocity.fromAngleAndSpeed(10, 5));
+        v.add(Velocity.fromAngleAndSpeed(25, 5));
+        v.add(Velocity.fromAngleAndSpeed(40, 5));
+        v.add(Velocity.fromAngleAndSpeed(55, 5));
+        v.add(Velocity.fromAngleAndSpeed(70, 5));
         return v;
     }
 
@@ -59,7 +64,7 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "Rubik Cube";
+        return "Wide Easy";
     }
 
     /**
@@ -77,34 +82,13 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        int columns = 3, width = 60, height = 30;
-        Color darkRed = new Color(144, 5, 5);
+        int columns = 15, width = 51, height = 30;
         Color darkGreen = new Color(29, 101, 51);
         List<Block> blocks = new ArrayList<>();
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < columns; j++) {
-                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(300 + width * j, 110 + height * i),
-                        width, height), darkGreen));
+        for (int j = 0; j < columns; j++) {
+            blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(20 + width * j, 110 + height),
+                    width, height), darkGreen));
             }
-        }
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < columns; j++) {
-                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(300 + width * j, 200 + height * i),
-                        width, height), Color.BLUE));
-            }
-        }
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < columns; j++) {
-                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(480 + width * j, 200 + height * i),
-                        width, height), Color.YELLOW));
-            }
-        }
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < columns; j++) {
-                blocks.add(new Block(new arkanoid.geometry.Rectangle(new Point(120 + width * j, 200 + height * i),
-                        width, height), darkRed));
-            }
-        }
         return blocks;
     }
 
@@ -113,6 +97,6 @@ public class LevelTwo implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 36;
+        return 15;
     }
 }

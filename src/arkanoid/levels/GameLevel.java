@@ -213,7 +213,7 @@ public class GameLevel implements Animation {
      */
     public void run() {
         // creates the paddle and adding it to the game.
-        Paddle p = new Paddle(new Rectangle(new Point(375, 594), this.info.paddleWidth(), 5),
+        Paddle p = new Paddle(new Rectangle(new Point(380, 594), this.info.paddleWidth(), 5),
                 this.keyboard, 21,  779, this.info.paddleSpeed());
         p.addToGame(this);
         this.running = true;

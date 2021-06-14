@@ -16,7 +16,7 @@ public class LevelFour implements LevelInformation {
      */
     @Override
     public int numberOfBalls() {
-        return 10;
+        return 3;
     }
 
     /**
@@ -25,16 +25,9 @@ public class LevelFour implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> v = new ArrayList<>();
-        v.add(Velocity.fromAngleAndSpeed(280, 5));
-        v.add(Velocity.fromAngleAndSpeed(300, 5));
+        v.add(Velocity.fromAngleAndSpeed(0, 5));
         v.add(Velocity.fromAngleAndSpeed(320, 5));
-        v.add(Velocity.fromAngleAndSpeed(340, 5));
-        v.add(Velocity.fromAngleAndSpeed(360, 5));
-        v.add(Velocity.fromAngleAndSpeed(380, 5));
-        v.add(Velocity.fromAngleAndSpeed(400, 5));
-        v.add(Velocity.fromAngleAndSpeed(420, 5));
-        v.add(Velocity.fromAngleAndSpeed(440, 5));
-        v.add(Velocity.fromAngleAndSpeed(430, 5));
+        v.add(Velocity.fromAngleAndSpeed(40, 5));
         return v;
     }
 
@@ -59,7 +52,7 @@ public class LevelFour implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "The lazy level X(";
+        return "Final Four";
     }
 
     /**
@@ -78,8 +71,8 @@ public class LevelFour implements LevelInformation {
     @Override
     public List<Block> blocks() {
         List <Block> blocks = new ArrayList<>();
-        Color[] colors = {Color.ORANGE, Color.YELLOW, Color.RED, Color.WHITE, Color.cyan, Color.DARK_GRAY};
-        for (int row = 0; row < 6; row++) {
+        Color[] colors = {Color.ORANGE, Color.YELLOW, Color.RED, Color.WHITE, Color.cyan, Color.DARK_GRAY, Color.BLUE};
+        for (int row = 0; row < 7; row++) {
             for (int col = 0; col < 20; col++) {
                 blocks.add(new Block(new Rectangle(new Point(20 + (40 * col), 100 + (20 * row)), 40, 20),
                         colors[row]));
@@ -93,6 +86,6 @@ public class LevelFour implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 120;
+        return 140;
     }
 }

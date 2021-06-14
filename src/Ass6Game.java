@@ -19,7 +19,6 @@ public class Ass6Game {
      */
     public static void main(String[] args) {
         List<LevelInformation> l = new ArrayList<>();
-        System.out.println(args.length);
             for (String str : args) {
                 if (str.equals("1")) {
                     l.add(new LevelOne());

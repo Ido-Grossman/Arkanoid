@@ -56,7 +56,7 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "Bowling 2 Side Pins";
+        return "Direct Hit";
     }
 
     /**
@@ -74,10 +74,9 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        int width = 100, height = 40;
+        int width = 30, height = 30;
         List<Block> blocks = new ArrayList<>();
-        blocks.add(new Block(new Rectangle(new Point(20, 100), width, height), Color.WHITE));
-        blocks.add(new Block(new Rectangle(new Point(680, 100), width, height), Color.WHITE));
+        blocks.add(new Block(new Rectangle(new Point(385, 100), width, height), Color.WHITE));
         return blocks;
     }
 
@@ -86,6 +85,6 @@ public class LevelOne implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 2;
+        return 1;
     }
 }

@@ -13,14 +13,13 @@ import java.util.List;
 
 public class LevelThree implements LevelInformation {
 
-    private int blockNum;
 
     /**
      * @return the number of balls in the given level.
      */
     @Override
     public int numberOfBalls() {
-        return 4;
+        return 2;
     }
 
     /**
@@ -29,10 +28,8 @@ public class LevelThree implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> v = new ArrayList<>();
-        v.add(Velocity.fromAngleAndSpeed(290, 5));
-        v.add(Velocity.fromAngleAndSpeed(310, 5));
         v.add(Velocity.fromAngleAndSpeed(330, 5));
-        v.add(Velocity.fromAngleAndSpeed(350, 5));
+        v.add(Velocity.fromAngleAndSpeed(30, 5));
         return v;
     }
 
@@ -57,7 +54,7 @@ public class LevelThree implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return "The great pyramid of Giza";
+        return "Green 3";
     }
 
     /**
@@ -75,11 +72,12 @@ public class LevelThree implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
+        int rows = 5, columns = 10, width = 40, height = 20;
         List<Block> blocks = new ArrayList<>();
-        for (int i = 1; i < 19; i++) {
-            for (int j = 0; j < i; j++) {
-                blocks.add(new Block(new Rectangle(new Point(400 - 20 * i + 40 *j, 50 + 20 * i), 40, 20),
-                        Color.ORANGE));
+        for (int i = 0; i < rows; i++) {
+            for (int j = i; j < columns; j++) {
+                blocks.add(new Block(new Rectangle(new Point(380 + width * j, 100 + height * i),
+                        width, height), Color.RED));
             }
         }
         return blocks;
@@ -90,6 +88,6 @@ public class LevelThree implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 190;
+        return 40;
     }
 }
