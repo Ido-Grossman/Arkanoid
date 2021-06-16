@@ -6,10 +6,15 @@ import arkanoid.geometry.Point;
 import arkanoid.geometry.Rectangle;
 import arkanoid.sprites.Sprite;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author ido grossman <idoddii@gmail.com>
+ * @version 1.
+ * @since 16-06-2021
+ */
 public class LevelFour implements LevelInformation {
     /**
      * @return the number of balls in the given level.
@@ -65,12 +70,11 @@ public class LevelFour implements LevelInformation {
 
     /**
      * The Blocks that make up this level, each block contains, its size, color and location.
-     *
      * @return the blocks of the level.
      */
     @Override
     public List<Block> blocks() {
-        List <Block> blocks = new ArrayList<>();
+        List<Block> blocks = new ArrayList<>();
         Color[] colors = {Color.ORANGE, Color.YELLOW, Color.RED, Color.WHITE, Color.cyan, Color.DARK_GRAY, Color.BLUE};
         for (int row = 0; row < 7; row++) {
             for (int col = 0; col < 20; col++) {

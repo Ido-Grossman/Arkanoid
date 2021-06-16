@@ -2,7 +2,10 @@ package arkanoid.levels;
 
 import arkanoid.GameEnvironment;
 // the animations to import.
-import arkanoid.animation.*;
+import arkanoid.animation.AnimationRunner;
+import arkanoid.animation.Animation;
+import arkanoid.animation.KeyPressStoppableAnimation;
+import arkanoid.animation.PauseScreen;
 // the listeners to import
 import arkanoid.listeners.BallRemover;
 import arkanoid.listeners.BlockRemover;

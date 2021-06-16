@@ -2,7 +2,7 @@ package arkanoid.sprites;
 
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * @author ido grossman <idoddii@gmail.com>

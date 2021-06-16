@@ -2,7 +2,8 @@ package arkanoid.sprites;
 
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.List;
 

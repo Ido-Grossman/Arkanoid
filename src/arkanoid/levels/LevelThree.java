@@ -11,6 +11,11 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author ido grossman <idoddii@gmail.com>
+ * @version 1.
+ * @since 16-06-2021
+ */
 public class LevelThree implements LevelInformation {
 
 
