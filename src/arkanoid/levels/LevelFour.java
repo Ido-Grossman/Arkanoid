@@ -75,7 +75,7 @@ public class LevelFour implements LevelInformation {
     @Override
     public List<Block> blocks() {
         List<Block> blocks = new ArrayList<>();
-        Color[] colors = {Color.ORANGE, Color.YELLOW, Color.RED, Color.WHITE, Color.cyan, Color.DARK_GRAY, Color.BLUE};
+        Color[] colors = {Color.ORANGE, Color.YELLOW, Color.RED, Color.WHITE, Color.cyan, Color.DARK_GRAY, Color.GREEN};
         for (int row = 0; row < 7; row++) {
             for (int col = 0; col < 20; col++) {
                 blocks.add(new Block(new Rectangle(new Point(20 + (40 * col), 100 + (20 * row)), 40, 20),
